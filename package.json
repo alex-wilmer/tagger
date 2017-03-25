@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "babel-eslint": "^7.2.1",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-register": "^6.24.0",
+    "cors": "^2.8.1",
+    "eslint": "^3.18.0",
+    "eslint-config-minimal": "^0.4.2",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.10.3",
+    "express": "^4.15.2",
+    "express-graphql": "^0.6.3",
+    "graphql": "^0.9.1",
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "rest": "nodemon api/index.js",
+    "ui": "cd ui && yarn start"
+  }
+}
