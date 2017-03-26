@@ -1,41 +1,14 @@
-import React, { Component } from 'react'
-import * as http from './http'
-
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-} from 'react-router-dom'
-
-class Home extends Component {
-  state = {
-    links: [],
-    tags: [],
-  }
-
-  async componentDidMount() {
-    let links = await http.get(`links`)
-    this.setState({ links })
-  }
-
-  render() {
-    return (
-      <div>
-        {this.state.links.map(link =>
-          <div key={link.id}>
-            <div><Link to={`links/${link.id}`}>{link.url}</Link></div>
-            <div>{link.description}</div>
-            <hr />
-          </div>
-        )}
-      </div>
-    )
-  }
-}
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import ListPage from './ListPage'
+import DetailsPage from './DetailsPage'
 
 let App = () => (
   <Router>
-    <Route exact path="/" component={Home} />
+    <div>
+      <Route exact path="/" component={ListPage} />
+      <Route path="/link/:id" component={DetailsPage} />
+    </div>
   </Router>
 )
 

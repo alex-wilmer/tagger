@@ -5,6 +5,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-register": "^6.24.0",
+    "body-parser": "^1.17.1",
     "cors": "^2.8.1",
     "eslint": "^3.18.0",
     "eslint-config-minimal": "^0.4.2",
