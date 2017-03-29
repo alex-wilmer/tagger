@@ -18,21 +18,27 @@ let schema = buildSchema(`
     links: [Link]
   }
 
-  type Foo {
-    name: String
-  }
-
   type Query {
-    foo: Foo
     links(id: ID): [Link]
     tags(id: ID): [Tag]
+  }
+
+  input LinkInput {
+    url: String!
+    description: String
+  }
+
+  type Mutation {
+    createLink(input: LinkInput): Link
+  }
+
+  schema {
+    query: Query
+    mutation: Mutation
   }
 `)
 
 let root = {
-  foo: {
-    name: () => new Error(`something fucked up`),
-  },
   links: ({ id }) => id
     ? db.links.filter(x => x.id === id).map(join(`link`, `tag`))
     : db.links.map(join(`link`, `tag`)),
@@ -40,6 +46,17 @@ let root = {
   tags: ({ id }) => id
     ? db.tags.filter(x => x.id === id).map(join(`tag`, `link`))
     : db.tags.map(join(`tag`, `link`)),
+
+  createLink: ({ input: { url, description } }) => {
+    let newLink = {
+      id: db.links.length + 1,
+      url,
+      description,
+    }
+
+    db.links.push(newLink)
+    return newLink
+  },
 }
 
 let app = express()
