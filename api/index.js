@@ -6,4 +6,4 @@ require(`babel-register`)({
   ],
 })
 
-require(`./rest-server`)
+require(`./${process.env.SERVER}-server`)

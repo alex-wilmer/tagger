@@ -14,10 +14,15 @@
     "express": "^4.15.2",
     "express-graphql": "^0.6.3",
     "graphql": "^0.9.1",
+    "graphql-server-express": "^0.6.0",
+    "graphql-tools": "^0.10.1",
     "nodemon": "^1.11.0"
   },
   "scripts": {
-    "rest": "nodemon api/index.js",
+    "rest": "SERVER=rest nodemon api/index.js",
+    "simple-graphql": "SERVER=simple_graphql nodemon api/index.js",
+    "graphql": "SERVER=graphql nodemon api/index.js",
+    "foo": "SERVER=foo nodemon api/index.js",
     "ui": "cd ui && yarn start"
   }
 }
